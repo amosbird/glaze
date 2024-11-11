@@ -1257,7 +1257,7 @@ namespace glz
                   else {
                      dump<'"'>(b, ix);
                      to<JSON, val_t>::template op<Opts>(item, ctx, b, ix);
-                     dump_not_empty(Opts.prettify ? "\": " : "\":", b, ix);
+                     dump_not_empty(Opts.prettify ? "\" : " : "\":", b, ix);
                   }
 
                   to<JSON, val_t>::template op<Opts>(item, ctx, b, ix);
@@ -1523,7 +1523,7 @@ namespace glz
                         // MSVC requires get<I> rather than keys[I]
                         static constexpr auto key = glz::get<I>(reflect<T>::keys); // GCC 14 requires auto here
                         static constexpr auto quoted_key = join_v < chars<"\"">, key,
-                                              Opts.prettify ? chars<"\": "> : chars < "\":" >>
+                                              Opts.prettify ? chars<"\" : "> : chars < "\":" >>
                            ;
 
                         static constexpr auto n = quoted_key.size();
@@ -1556,7 +1556,7 @@ namespace glz
                      // MSVC requires get<I> rather than keys[I]
                      static constexpr auto key = glz::get<I>(reflect<T>::keys); // GCC 14 requires auto here
                      static constexpr auto quoted_key = join_v < chars<"\"">, key,
-                                           Opts.prettify ? chars<"\": "> : chars < "\":" >>
+                                           Opts.prettify ? chars<"\" : "> : chars < "\":" >>
                         ;
 
                      static constexpr auto n = quoted_key.size();
@@ -1687,7 +1687,7 @@ namespace glz
 
                   static constexpr auto key = get<0>(group);
                   static constexpr auto quoted_key = join_v < chars<"\"">, key,
-                                        Opts.prettify ? chars<"\": "> : chars < "\":" >>
+                                        Opts.prettify ? chars<"\" : "> : chars < "\":" >>
                      ;
                   dump<quoted_key>(b, ix);
 
@@ -1722,7 +1722,7 @@ namespace glz
 
                   static constexpr auto key = std::get<0>(group);
                   static constexpr auto quoted_key = join_v < chars<"\"">, key,
-                                        Opts.prettify ? chars<"\": "> : chars < "\":" >>
+                                        Opts.prettify ? chars<"\" : "> : chars < "\":" >>
                      ;
                   dump<key>(b, ix);
 
